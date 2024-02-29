@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import marked from 'marked';
 
 const TemplateDetail = ({ templateName }) => {
   const [versions, setVersions] = useState([]);
@@ -15,15 +14,17 @@ const TemplateDetail = ({ templateName }) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json(); // Assuming the server responds with JSON now
+        return response.json();
       })
       .then((data) => {
         if (data.versions && data.versions.length > 0) {
           setVersions(data.versions);
           setSelectedVersion(data.versions[0].version);
         }
-        if (data.description) {
-          setDescription(marked(data.description)); // Convert Markdown to HTML
+        if (data.description && window.showdown) {
+          const converter = new window.showdown.Converter();
+          const htmlContent = converter.makeHtml(data.description);
+          setDescription(htmlContent);
         }
         setIsLoading(false);
       })
@@ -32,7 +33,7 @@ const TemplateDetail = ({ templateName }) => {
         setError(error.toString());
         setIsLoading(false);
       });
-  }, [templateName]); // Re-fetch when templateName changes
+  }, [templateName]);
 
   const handleVersionChange = (event) => {
     setSelectedVersion(event.target.value);
@@ -68,7 +69,6 @@ const TemplateDetail = ({ templateName }) => {
           </a>
         </>
       )}
-      {/* Render the Markdown description as HTML */}
       <div dangerouslySetInnerHTML={{ __html: description }} />
     </div>
   );
