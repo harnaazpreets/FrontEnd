@@ -16,7 +16,7 @@ app.get('/api/templates', (req, res) => {
             return res.status(500).send('Error executing PROS CLI command');
         }
         // Assume stdout is properly formatted JSON
-        try {
+      try {
             const templates = JSON.parse(stdout);
             res.json(templates);
         } catch (error) {
