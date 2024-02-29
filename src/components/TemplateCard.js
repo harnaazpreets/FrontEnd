@@ -1,6 +1,6 @@
-// TemplateCard.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 
 const TemplateCard = ({ logo, name, target }) => {
   return (
