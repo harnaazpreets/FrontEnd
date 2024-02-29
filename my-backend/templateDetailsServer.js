@@ -24,7 +24,9 @@ function parseJSONPart(jsonPart) {
       nonJsonOutput += char;
     }
   }
-  return [jsonOutput.replace('}, "', '}]'), nonJsonOutput]; // Adjusts JSON formatting
+  // Adjust JSON formatting
+  jsonOutput = jsonOutput.replace('}, "', '}');
+  return [jsonOutput, nonJsonOutput];
 }
 
 // Helper function to parse non-JSON part
@@ -40,7 +42,6 @@ function parseNonJSONPart(output) {
   }
 }
 
-// Function to run command and parse output
 // Function to run command and parse output
 function runCommandAndParseOutput(templateName, callback) {
     exec(`pros c get-branchline-template-versions ${templateName}`, (error, stdout, stderr) => {
@@ -79,7 +80,6 @@ function runCommandAndParseOutput(templateName, callback) {
     });
 }
 
-
 app.get('/api/templates/:templateName/versions', (req, res) => {
     const { templateName } = req.params;
 
@@ -91,7 +91,7 @@ app.get('/api/templates/:templateName/versions', (req, res) => {
         // Prepare dropdown menu HTML
         let dropdownHTML = '<select id="versionDropdown">';
         versions.forEach(version => {
-            dropdownHTML += `<option value="${version}">${version}</option>`;
+            dropdownHTML += `<option value="${version.version}">${version.version}</option>`;
         });
         dropdownHTML += '</select>';
 
@@ -110,3 +110,5 @@ app.get('/api/templates/:templateName/versions', (req, res) => {
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
+``
+

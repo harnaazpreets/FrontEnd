@@ -44,7 +44,7 @@ def run_command_and_parse_output(command):
         json_part = output[json_start_index:json_end_index + 1]
         json_output, non_json_output = parse_json_part(json_part)
         # Ensure JSON part ends with `}]`
-        json_output = json_output.replace('}, "', '}]')
+        json_output = json_output.replace('}, "', '}')
     else:
         print("No JSON part found in the output.")
 
