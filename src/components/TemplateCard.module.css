@@ -1,0 +1,38 @@
+.templateCard {
+  display: block; 
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 100%; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  text-decoration: none; 
+  background-color: white; 
+  border-radius: 10px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  color: inherit; 
+}
+
+.templateCard:hover {
+  transform: translateY(-5px); /* Lift card on hover */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for a "pop" effect */
+}
+
+.templateLogo {
+  width: 80px; /* Slightly larger logo for better visibility */
+  margin-bottom: 15px;
+}
+
+.templateInfo {
+  text-align: center; /* Center the text for the template information */
+}
+
+.templateName {
+  color: #333;
+  font-size: 1.4rem; /* Slightly larger font size for better readability */
+  margin: 5px 0; 
+}
+
+.templateTarget {
+  color: #666;
+  font-size: 1rem;
+  margin: 5px 0; /* Consistent spacing for a clean look */
+}

@@ -1,0 +1,68 @@
+/* Ensure this path is correct for TemplateDetail.module.css */
+.templateDetail {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: left;
+  }
+  
+  .templateDetail h2 {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .templateDetail select {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .templateDetail a {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .templateDetail a:hover {
+    background-color: #0056b3;
+  }
+  
+  .description {
+    margin-top: 20px;
+  }
+  
+  .description h1,
+  .description h2,
+  .description h3,
+  .description h4,
+  .description h5,
+  .description h6 {
+    color: #333;
+    /* Add any additional styling for headings here */
+  }
+  
+  .description p {
+    margin-bottom: 1em;
+    /* Add any additional styling for paragraphs here */
+  }
+  
+  .description ul,
+  .description ol {
+    padding-left: 20px;
+    /* Add any additional styling for lists here */
+  }
+  
+  .description a {
+    color: #007bff;
+    text-decoration: underline;
+    /* Add any additional styling for links here */
+  }
+  

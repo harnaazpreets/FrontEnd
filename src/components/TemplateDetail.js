@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import marked from 'marked';
+import DOMPurify from 'dompurify';
+import styles from './TemplateDetail.module.css';
 
 const TemplateDetail = ({ templateName }) => {
   const [versions, setVersions] = useState([]);
@@ -8,36 +12,37 @@ const TemplateDetail = ({ templateName }) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    console.log(`Fetching data for template: ${templateName}`); // Debugging line
     setIsLoading(true);
     fetch(`http://localhost:3003/api/templates/${templateName}/versions`)
-      .then((response) => {
+      .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then((data) => {
+      .then(data => {
+        console.log('Received data:', data); // Debugging line
         if (data.versions && data.versions.length > 0) {
           setVersions(data.versions);
           setSelectedVersion(data.versions[0].version);
         }
-        if (data.description && window.showdown) {
-          const converter = new window.showdown.Converter();
-          const htmlContent = converter.makeHtml(data.description);
-          setDescription(htmlContent);
+        if (data.description) {
+          console.log('Markdown description:', data.description); // Debugging line
+          const htmlContent = marked(data.description);
+          console.log('Converted HTML:', htmlContent); // Debugging line
+          const sanitizedContent = DOMPurify.sanitize(htmlContent);
+          console.log('Sanitized HTML:', sanitizedContent); // Debugging line
+          setDescription(sanitizedContent);
         }
         setIsLoading(false);
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Error fetching template versions:', error);
         setError(error.toString());
         setIsLoading(false);
       });
   }, [templateName]);
-
-  const handleVersionChange = (event) => {
-    setSelectedVersion(event.target.value);
-  };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -47,29 +52,22 @@ const TemplateDetail = ({ templateName }) => {
     return <div>Error: {error}</div>;
   }
 
-  const selectedVersionData = versions.find(v => v.version === selectedVersion);
-
   return (
-    <div className="template-detail">
+    <div className={styles.templateDetail}>
       <h2>{templateName}</h2>
-      {versions.length > 0 && (
-        <select value={selectedVersion} onChange={handleVersionChange}>
-          {versions.map((versionInfo) => (
-            <option key={versionInfo.version} value={versionInfo.version}>
-              {versionInfo.version}
-            </option>
-          ))}
-        </select>
-      )}
-      {selectedVersionData && (
-        <>
-          <p>Version: {selectedVersionData.version}</p>
-          <a href={selectedVersionData.downloadLink} download>
+      <select value={selectedVersion} onChange={(e) => setSelectedVersion(e.target.value)} className={styles.versionSelect}>
+        {versions.map((v) => (
+          <option key={v.version} value={v.version}>{v.version}</option>
+        ))}
+      </select>
+      {selectedVersion && (
+        <div>
+          <a href={versions.find(v => v.version === selectedVersion).metadata.location} download className={styles.downloadButton}>
             Download
           </a>
-        </>
+        </div>
       )}
-      <div dangerouslySetInnerHTML={{ __html: description }} />
+      <div dangerouslySetInnerHTML={{ __html: description }} className={styles.description} />
     </div>
   );
 };

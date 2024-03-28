@@ -1,0 +1,101 @@
+/* Using CSS Module, class names are locally scoped and camelCased by convention */
+
+.app {
+  text-align: center;
+}
+
+.logo {
+  height: 40vmin;
+  pointerEvents: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logoSpin infinite 20s linear;
+  }
+}
+
+.header {
+  backgroundColor: #282c34;
+  minHeight: 100vh;
+  display: flex;
+  flexDirection: column;
+  alignItems: center;
+  justifyContent: center;
+  fontSize: calc(10px + 2vmin);
+  color: white;
+}
+
+.link {
+  color: #61dafb;
+}
+
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modernizing template container and card styles */
+.templateContainer {
+  display: flex;
+  flexWrap: wrap;
+  gap: 20px;
+  justifyContent: center;
+}
+
+.templateCard {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 200px;
+  height: auto; /* Adjust based on content */
+  textAlign: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, boxShadow 0.3s ease;
+  display: flex;
+  flexDirection: column;
+  alignItems: center;
+  backgroundColor: white;
+  color: black;
+  borderRadius: 8px; /* Rounded corners for a modern look */
+}
+
+.templateCard:hover {
+  transform: translateY(-5px);
+  boxShadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Detail view styling adjustments */
+.templateDetail {
+  display: flex;
+  flexDirection: column;
+  alignItems: center;
+  padding: 20px;
+}
+
+.templateDetail img.logo {
+  width: 150px;
+  marginBottom: 20px;
+}
+
+.templateDetail h2,
+.templateDetail p,
+.templateDetail select,
+.templateDetail a {
+  margin: 10px 0;
+}
+
+.templateDetail a {
+  padding: 10px 20px;
+  backgroundColor: #007bff; /* Bootstrap primary color */
+  color: white;
+  textDecoration: none;
+  borderRadius: 5px;
+}
+
+.templateDetail a:hover {
+  backgroundColor: #0056b3; /* Darker on hover */
+}

@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  alignItems: center;
+  justifyContent: space-between; /* Adjust depending on layout */
+  backgroundColor: #282c34; /* Consider a more dynamic color or a gradient */
+  padding: 20px;
+  color: white;
+}
+
+.headerLogo {
+  width: 100px; /* Responsive size */
+  marginRight: 20px; /* Space between logo and title */
+  transition: transform 0.2s ease; /* Smooth transition on hover */
+}
+
+.headerLogo:hover {
+  transform: scale(1.1); /* Slight increase to indicate interactivity */
+}
+
+.headerTitle {
+  fontSize: 1.5em; /* Responsive font size */
+  fontWeight: bold; /* Increase if needed */
+  margin: 0;
+  textShadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  flex: 1; /* Ensures title takes up the remaining space */
+}
