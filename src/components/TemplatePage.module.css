@@ -1,62 +1,138 @@
-.header {
-  background-color: #282c34; /* Dark background for contrast */
-  padding: 1rem;
-  display: flex;
-  justify-content: center; /* Center header content horizontally */
-  align-items: center; /* Center header content vertically */
-  color: white; /* Set the text color to white for contrast */
-}
-.templateHeader {
-  text-align: center;
-  margin-bottom: 1rem;
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Root Variables for Easy Theme Management */
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #FFC75F;
+  --accent-color: #1B9CFC;
+  --dark-bg: #0D1117;
+  --light-bg: #F8EFBA;
+  --animation-duration: 5s;
+  --hover-scale: 1.03; /* New variable for subtle hover effect */
 }
 
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--dark-bg) 30%, #1B262C 100%);
+  color: #FFFFFF;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles with Gradient and Animation */
+.header {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  animation: ColorShift var(--animation-duration) infinite ease-in-out; /* Changed to ease-in-out for smoother transition */
+}
+
+@keyframes ColorShift {
+  0%, 100% { filter: hue-rotate(0deg); }
+  25%, 75% { filter: hue-rotate(15deg); } /* Made the hue-rotate less intense for subtler effect */
+}
+
+/* Template Header */
+.templateHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0px var(--accent-color);
+}
+
+/* Version Selector Style */
 .versionSelector {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .versionSelect {
-  width: 500%; /* Adjust width to your preference */
-  max-width: 500px; /* Set a max-width for very large screens */
   padding: 10px 20px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  border-radius: 20px;
   font-size: 1.2rem;
-  background-color: #f8f9fa; /* Light background for the select box */
-  color: #495057; /* Dark color for the select text */
-  margin: 0 auto 20px; /* Auto margin for horizontal centering */
-}
-.downloadSection {
-  text-align: center;
-  margin-bottom: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Download Button with Animated Gradient */
 .downloadButton {
-  padding: 10px 20px;
-  background-color: #28a745; /* Green color for success */
+  background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  border: none;
   color: white;
-  border-radius: 4px;
-  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 50px;
   display: inline-block;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, background-image 0.3s;
   cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  align-self: start; /* Aligns the button to the start of its container */
 }
 
 .downloadButton:hover {
-  background-color: #218838; /* Darker green on hover */
-  transform: translateY(-2px); /* Slight lift for button on hover */
+  transform: scale(var(--hover-scale)); /* Subtle hover effect using scale */
+  background-image: linear-gradient(45deg, var(--secondary-color) 50%, var(--primary-color) 50%); /* Less drastic change */
 }
+
+/* Description Section */
 .descriptionSection {
-  width: 100%; /* Full width */
-  margin: 1rem 0; /* Vertical margin only */
-  padding: 1rem; /* Padding inside the section */
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  border-top: 3px solid #007bff;
+  width: 80%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--light-bg);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-top: 4px solid var(--primary-color);
+  color: var(--dark-bg);
+  font-size: 1.1rem;
 }
 
+/* Background Shapes and Animations */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: 
+    linear-gradient(var(--primary-color), var(--primary-color)),
+    linear-gradient(var(--secondary-color), var(--secondary-color)),
+    linear-gradient(var(--accent-color), var(--accent-color)),
+    linear-gradient(var(--light-bg), var(--light-bg));
+  z-index: -1;
+  animation: Rotate var(--animation-duration) linear infinite;
+}
 
+@keyframes Rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .header, .templateHeader, .versionSelector, .descriptionSection {
+    text-align: center;
+    margin: auto;
+  }
+
+  .versionSelect, .downloadButton {
+    width: 90%; /* Adjust width for smaller screens */
+  }
+}
