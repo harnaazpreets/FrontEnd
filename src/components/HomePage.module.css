@@ -1,37 +1,112 @@
+:root {
+  --bg-color: #f5f5f5;
+  --banner-bg-color: #282c34;
+  --text-color: #333;
+  --secondary-text-color: #adb5bd;
+  --highlight-color: #e2e5e8; /* Interactive elements and highlights */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 10px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 .homepage {
   text-align: center;
-  background-color: #f5f5f5;
-  padding: 20px 0; 
+  background-color: var(--bg-color);
+  padding: 40px 0; /* Increased padding for a more spacious look */
 }
 
 .banner {
-  padding: 40px 20px; 
-  background-color: #282c34; 
-  color: white; 
+  padding: 60px 20px; /* More padding for a dramatic effect */
+  background-color: var(--banner-bg-color);
+  color: white;
+  position: relative; /* For pseudo-elements and absolute positioning */
+  overflow: hidden; /* Ensures children don't overflow */
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Subtle highlight at the bottom */
+  background: var(--highlight-color);
+  animation: widen 2s ease-out infinite alternate;
+}
+
+@keyframes widen {
+  from { width: 0; }
+  to { width: 100%; }
 }
 
 .homepageLogo {
-  width: 100px; 
-  margin-bottom: 20px;
+  width: 120px; /* Slightly larger for emphasis */
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+.homepageLogo:hover {
+  transform: rotate(-10deg) scale(1.1); /* Interactive rotation effect */
+}
+
+.homepageTitle, .homepageSubtitle {
+  transition: color 0.3s ease;
+}
+
+.homepageTitle:hover, .homepageSubtitle:hover {
+  color: var(--highlight-color); /* Interactive text color change */
 }
 
 .homepageTitle {
-  font-size: 2.5rem; 
-  font-weight: 600; 
-  margin-bottom: 10px;
+  font-size: 3rem; /* Larger for more impact */
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .homepageSubtitle {
-  font-size: 1.2rem; 
-  margin-bottom: 30px;
-  color: #adb5bd; 
+  font-size: 1.5rem; /* Increased for readability */
+  margin-bottom: 40px;
+  color: var(--secondary-text-color);
 }
 
 .templateContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-  gap: 20px; 
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive adjustment */
+  gap: 30px; /* Increased gap for better separation */
+  padding: 40px; /* More padding for spacious layout */
+  animation: fadeIn 1s ease-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
+/* Example of a button that might complement your layout */
+.button {
+  padding: 15px 30px;
+  font-size: 1rem;
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: var(--box-shadow);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: darken(var(--highlight-color), 10%);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}

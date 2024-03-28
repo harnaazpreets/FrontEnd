@@ -1,68 +1,76 @@
-/* Ensure this path is correct for TemplateDetail.module.css */
 .templateDetail {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: left;
-  }
-  
-  .templateDetail h2 {
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .templateDetail select {
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .templateDetail a {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-  }
-  
-  .templateDetail a:hover {
-    background-color: #0056b3;
-  }
-  
-  .description {
-    margin-top: 20px;
-  }
-  
-  .description h1,
-  .description h2,
-  .description h3,
-  .description h4,
-  .description h5,
-  .description h6 {
-    color: #333;
-    /* Add any additional styling for headings here */
-  }
-  
-  .description p {
-    margin-bottom: 1em;
-    /* Add any additional styling for paragraphs here */
-  }
-  
-  .description ul,
-  .description ol {
-    padding-left: 20px;
-    /* Add any additional styling for lists here */
-  }
-  
-  .description a {
-    color: #007bff;
-    text-decoration: underline;
-    /* Add any additional styling for links here */
-  }
-  
+  background-color: #ffffff;
+  padding: 40px; /* Increased padding for a more spacious feel */
+  border-radius: 10px; /* Smoother border-radius for modern look */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Softer shadow for depth */
+  max-width: 800px;
+  margin: 40px auto; /* Increased margin for better focus on the content */
+  text-align: left;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern, readable font */
+}
+
+.templateDetail h2 {
+  color: #004085; /* More noticeable, brand-aligned color */
+  margin-bottom: 20px;
+  font-size: 2.25rem; /* Larger for importance */
+}
+
+.templateDetail select {
+  padding: 12px 15px; /* More touch-friendly padding */
+  margin-bottom: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ced4da; /* Subtle border */
+  border-radius: 5px; /* Consistency in rounding */
+  background-color: #f8f9fa; /* Slightly off-white for depth */
+  font-size: 1rem; /* Readability */
+}
+
+.templateDetail a {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px; /* Larger, more clickable */
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+  font-weight: bold; /* More prominent */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+.templateDetail a:hover, .templateDetail a:focus {
+  background-color: #0056b3;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Slight shadow for depth */
+}
+
+.description {
+  margin-top: 30px;
+  line-height: 1.6; /* Improved readability */
+  color: #495057; /* Softer than black for reading comfort */
+}
+
+.description h1, .description h2, .description h3, .description h4, .description h5, .description h6 {
+  color: #004085; /* Consistent with the header */
+  margin-top: 20px; /* Spacing above headings */
+  margin-bottom: 10px; /* Spacing below headings */
+}
+
+.description p {
+  margin-bottom: 1.25em; /* Slightly more space between paragraphs */
+}
+
+.description ul, .description ol {
+  padding-left: 40px; /* More indentation for clear hierarchy */
+  margin-bottom: 1.25em;
+}
+
+.description a {
+  color: #0056b3; /* Brand-aligned, noticeable color */
+  text-decoration: none; /* Cleaner look */
+  border-bottom: 1px dashed #0056b3; /* Subtle indication of link */
+  transition: border-bottom-color 0.2s ease-in-out; /* Transition for interaction */
+}
+
+.description a:hover, .description a:focus {
+  border-bottom-color: transparent; /* Interactive feedback */
+}

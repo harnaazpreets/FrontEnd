@@ -8,131 +8,125 @@
   --accent-color: #1B9CFC;
   --dark-bg: #0D1117;
   --light-bg: #F8EFBA;
-  --animation-duration: 5s;
-  --hover-scale: 1.03; /* New variable for subtle hover effect */
+  --font-family: 'Poppins', sans-serif;
+  --border-radius: 10px; /* Standardized border radius */
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Standardized shadow */
+  --hover-scale: 1.05; /* Subtle hover effect scale */
+  --transition-speed: 0.3s; /* Standardized transition speed */
 }
 
 /* Global Styles */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--dark-bg) 30%, #1B262C 100%);
+  font-family: var(--font-family);
+  background: var(--dark-bg);
   color: #FFFFFF;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
-/* Header Styles with Gradient and Animation */
+/* Header Styles */
 .header {
-  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  animation: ColorShift var(--animation-duration) infinite ease-in-out; /* Changed to ease-in-out for smoother transition */
 }
 
-@keyframes ColorShift {
-  0%, 100% { filter: hue-rotate(0deg); }
-  25%, 75% { filter: hue-rotate(15deg); } /* Made the hue-rotate less intense for subtler effect */
-}
-
+/* Removing the funky animation for a cleaner look */
 /* Template Header */
 .templateHeader {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: var(--secondary-color);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0px var(--accent-color);
+  color: var(--primary-color);
+  letter-spacing: 1px;
 }
 
-/* Version Selector Style */
+/* Version Selector Style - Improved Size and Alignment */
+/* Version Selector Style - Improved Size and Clarity */
 .versionSelector {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+  display: grid;
+  place-items: center; /* Centers the dropdown in the container */
+  margin-bottom: 3rem;
 }
 
-.versionSelect {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.2rem;
-  background-color: var(--accent-color);
-  color: white;
-  margin: 0 auto;
+.versionSelector select {
+  padding: 15px 30px; /* Increased padding for a larger box */
+  width: 100%; /* Set to 100% of the parent container */
+  max-width:140px; /* Adjusted max-width for balance */
+  font-size: 1.2rem; /* Slightly larger font size for better readability */
+  border: 2px solid var(--secondary-color); /* Defining a border to make it look like an interactive field */
+  border-radius: var(--border-radius);
+  background-color: #ffffff; /* Changed to white to avoid the appearance of being pre-selected */
+  color: var(--dark-bg); /* Dark text color for contrast */
+  box-shadow: var(--box-shadow);
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
 }
 
-/* Download Button with Animated Gradient */
+/* Custom arrow using background images for select element */
+.versionSelector select {
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%230D1117" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+
+.versionSelector select:hover {
+  border-color: var(--primary-color); /* Change border color on hover for feedback */
+}
+
+/* Download Button - Centered and Prominent */
 .downloadButton {
-  background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  border: none;
+  padding: 15px 30px;
+  border-radius: var(--border-radius);
+  display: block;
+  margin: 0 auto 2rem;
+  text-align: center;
+  background-color: var(--primary-color);
   color: white;
-  padding: 12px 24px;
-  border-radius: 50px;
-  display: inline-block;
-  transition: transform 0.3s, background-image 0.3s;
-  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
   text-decoration: none;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  align-self: start; /* Aligns the button to the start of its container */
+  box-shadow: var(--box-shadow);
+  font-weight: 600; /* Making text bold */
 }
 
 .downloadButton:hover {
-  transform: scale(var(--hover-scale)); /* Subtle hover effect using scale */
-  background-image: linear-gradient(45deg, var(--secondary-color) 50%, var(--primary-color) 50%); /* Less drastic change */
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
 }
 
-/* Description Section */
+/* Rest of the styles remain the same */
+
+/* Description Section - Enhanced Readability */
 .descriptionSection {
   width: 80%;
   margin: 2rem auto;
   padding: 2rem;
   background-color: var(--light-bg);
-  border-radius: 8px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  border-top: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border-top: 5px solid var(--primary-color);
   color: var(--dark-bg);
   font-size: 1.1rem;
 }
 
-/* Background Shapes and Animations */
-body::before {
+/* Simplified Background Shapes */
+body::before, body::after {
   content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-repeat: no-repeat;
-  background-size: 50% 50%, 50% 50%;
-  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  background-image: 
-    linear-gradient(var(--primary-color), var(--primary-color)),
-    linear-gradient(var(--secondary-color), var(--secondary-color)),
-    linear-gradient(var(--accent-color), var(--accent-color)),
-    linear-gradient(var(--light-bg), var(--light-bg));
-  z-index: -1;
-  animation: Rotate var(--animation-duration) linear infinite;
-}
-
-@keyframes Rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  display: none; /* Remove for a cleaner background */
 }
 
 /* Responsive Design Adjustments */
 @media (max-width: 768px) {
-  .header, .templateHeader, .versionSelector, .descriptionSection {
-    text-align: center;
-    margin: auto;
-  }
-
   .versionSelect, .downloadButton {
-    width: 90%; /* Adjust width for smaller screens */
+    width: 80%; /* Increase width for better usability on small screens */
+    padding: 12px 20px; /* Adjust padding for smaller screens */
   }
 }
